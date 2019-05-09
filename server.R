@@ -1,6 +1,6 @@
 library(shiny)
 library(ggplot2)
-library(readr)
+library(tidyverse)
 
 rice_data <- read_csv("RiceDiversity.44K.MSU6.Phenotypes.csv")
 colnames(rice_data) <- gsub(" ", "_", colnames(rice_data))
@@ -26,7 +26,7 @@ shinyServer(function(input, output) {
                  #correctly.  The other variables need to be quoted
                  aes_string(x=input$X_Axis,
                             y=input$Y_Axis,
-                            color="Amylose_content")
+                            color=input$Color_fill)
                  )
     
     

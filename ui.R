@@ -25,6 +25,10 @@ shinyUI(fluidPage( #create the overall page
       selectInput("Y_Axis", #the input variable that the value will go into
                   "Choose another variable:",
                   c("Alkali_spreading_value","Protein_content","Blast_resistance","Alu.Tol")
+      ),
+      radioButtons("Color_fill", #the input variable that the value will go into color aes
+                  "Choose the color variable:",
+                  c("Amylose_content","Leaf_pubescence")
       )
     ),
     
