@@ -4,12 +4,15 @@ library(shiny)
 shinyUI(fluidPage( #create the overall page
   
   # Application title
-  titlePanel("Iris Data"),
+  titlePanel("Comparing Rice Strain Traits by Region"),
   
   # Some helpful information
-  helpText("This application creates a boxplot to show difference between",
-           "iris species.  Please use the radio box below to choose a trait",
-           "for plotting"),
+  helpText("This interactive application allows the comparison of various traits",
+           "from the rice phenotype dataset. Changing region changes the origin of",
+           "the strain of rice. Selecting the two variables plots them on the X",
+           "and Y axis respectively. Finally, to add an additional dimension of",
+           "analysis, a color fill is chosen to represent the gradient of a third",
+           "variable in relation to the X and Y axes." ),
   
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
