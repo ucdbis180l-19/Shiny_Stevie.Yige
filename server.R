@@ -14,11 +14,11 @@ shinyServer(function(input, output) {
   output$boxPlot <- renderPlot({
     
     # set up the plot
-    pl <- ggplot(data = iris,
+    pl <- ggplot(data = subset(iris, Species == input$species),
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
                  aes_string(x="Species",
-                            y=input$trait,
+                            y=input$species,
                             fill="Species"
                  )
     )
