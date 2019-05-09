@@ -14,12 +14,20 @@ shinyUI(fluidPage( #create the overall page
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      radioButtons("species", #the input variable that the value will go into
-                   "Choose a species to display:",
-                   c("setosa",
-                     "versicolor",
-                     "virginica")
-      )),
+      selectInput("Region", #the input variable that the value will go into
+                   "Choose a region to explore:",
+                   c("Europe","E Asia","S Asia","Pacific","Mid East","America","SE Asia","Africa","C Asia")
+      ),
+      selectInput("X_Axis", #the input variable that the value will go into
+                  "Choose a variable:",
+                  c("Flag_leaf_length","Panicle_length","Seed_length","Seed_volume")
+      ),
+      selectInput("Y_Axis", #the input variable that the value will go into
+                  "Choose another variable:",
+                  c("Alkali_spreading_value","Protein_content","Blast_resistance","Alu.Tol")
+      )
+    ),
+    
     
     # Show a plot of the generated distribution
     mainPanel(plotOutput("boxPlot")

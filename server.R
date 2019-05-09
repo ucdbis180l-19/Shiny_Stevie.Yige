@@ -1,5 +1,9 @@
 library(shiny)
 library(ggplot2)
+library(readr)
+
+rice_data <- read_csv("RiceDiversity.44K.MSU6.Phenotypes.csv")
+colnames(rice_data) <- gsub(" ", "_", colnames(rice_data))
 
 # Define server logic required to draw a boxplot
 shinyServer(function(input, output) {
@@ -14,16 +18,19 @@ shinyServer(function(input, output) {
   output$boxPlot <- renderPlot({
     
     # set up the plot
-    pl <- ggplot(data = subset(iris, Species == input$species),
+    pl <- 
+      rice_data %>%
+      filter(Region == input$Region) %>%
+      ggplot(
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
-                 aes_string(x="Species",
-                            y=input$species,
-                            fill="Species"
+                 aes_string(x=input$X_Axis,
+                            y=input$Y_Axis,
+                            color="Amylose_content")
                  )
-    )
+    
     
     # draw the boxplot for the specified trait
-    pl + geom_boxplot()
+    pl + geom_point()
   })
 })
